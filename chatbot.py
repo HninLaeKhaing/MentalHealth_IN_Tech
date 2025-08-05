@@ -9,6 +9,10 @@ from tensorflow.keras.models import load_model
 lemmatizer = WordNetLemmatizer()
 
 # Load trained artifacts
+
+texts = pickle.load(open("texts.pkl", "rb"))
+labels = pickle.load(open("labels.pkl", "rb"))
+
 model = load_model('model/model.h5')
 intents = json.loads(open('intents.json').read())
 words = pickle.load(open('model/texts.pkl', 'rb'))
