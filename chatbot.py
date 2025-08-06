@@ -1,3 +1,12 @@
+import os
+
+print("Current working directory:", os.getcwd())
+print("model.h5 exists:", os.path.exists('model/model.h5'))
+print("texts.pkl exists:", os.path.exists('model/texts.pkl'))
+print("labels.pkl exists:", os.path.exists('model/labels.pkl'))
+
+
+
 import random
 import json
 import pickle
