@@ -1,21 +1,19 @@
-import nltk
-import os
-
-# Add custom nltk_data path
-nltk.data.path.append(os.path.join(os.path.dirname(__file__), 'nltk_data'))
-
-
 import streamlit as st
 import random
 import json
 import pickle
 import numpy as np
 import nltk
+import os
 from nltk.stem import WordNetLemmatizer
 from tensorflow.keras.models import load_model
 
-# Load assets
+# Add local nltk_data path (fix for Streamlit Cloud)
+nltk.data.path.append(os.path.join(os.path.dirname(__file__), 'nltk_data'))
+
 lemmatizer = WordNetLemmatizer()
+
+# Load assets
 model = load_model("model/model.h5")
 intents = json.loads(open("intents.json").read())
 words = pickle.load(open("model/texts.pkl", "rb"))
@@ -56,12 +54,10 @@ def chatbot_response(msg):
 # Streamlit UI
 st.set_page_config(page_title="Mental Health Chatbot", page_icon="💬")
 st.title("💬 Mental Health Chatbot")
-st.markdown("Ask me anything related to mental health. Type below and hit enter.")
+st.markdown("Type your message below to chat.")
 
-# Chat input
-user_input = st.text_input("You:", placeholder="Type your message here...")
+user_input = st.text_input("You:", placeholder="Hi, how are you feeling today?")
 
-# Show response
 if user_input:
     response = chatbot_response(user_input)
     st.write(f"**Bot:** {response}")
