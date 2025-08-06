@@ -10,13 +10,12 @@ lemmatizer = WordNetLemmatizer()
 
 # Load trained artifacts
 
-texts = pickle.load(open("texts.pkl", "rb"))
-labels = pickle.load(open("labels.pkl", "rb"))
-
 model = load_model('model/model.h5')
+texts = pickle.load(open("model/texts.pkl", "rb"))
+labels = pickle.load(open("model/labels.pkl", "rb"))
+
 intents = json.loads(open('intents.json').read())
-words = pickle.load(open('model/texts.pkl', 'rb'))
-classes = pickle.load(open('model/labels.pkl', 'rb'))
+
 
 def clean_up_sentence(sentence):
     sentence_words = nltk.word_tokenize(sentence)
