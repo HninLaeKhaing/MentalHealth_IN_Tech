@@ -1,3 +1,10 @@
+import nltk
+import os
+
+# Add custom nltk_data path
+nltk.data.path.append(os.path.join(os.path.dirname(__file__), 'nltk_data'))
+
+
 import streamlit as st
 import random
 import json
